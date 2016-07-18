@@ -5,6 +5,7 @@
         <input id="answer" type="text">
         <button id="submit">提交</button>
     </div>
+    <button @click="replay">重新开始</button>
 </template>
 
 <script>
@@ -20,7 +21,7 @@
             ws.onmessage = (msg) => {
               let pathObj = msg.data.split('.')
               cxt.strokeStyle = "#000"
-              
+
               if (moveToSwitch && msg.data != 'stop' && msg.data != 'clear') {
                   cxt.beginPath()
                   cxt.moveTo(pathObj[0], pathObj[1])
@@ -30,7 +31,7 @@
                   cxt.moveTo(pathObj[0], pathObj[1])
                   moveToSwitch = 1
               } else if (moveToSwitch && msg.data == 'clear') {
-                  cxt.clearRect(0, 0, 500, 500)
+                  cxt.clearRect(0, 0, 520, 520)
               } else if (msg.data == '答对了！！') {
                   alert('恭喜你答对了！！')
               }
@@ -46,6 +47,11 @@
                     let keyword = document.getElementById('answer').value
                     ws.send(keyword)
                 }
+            }
+        },
+        methods: {
+            replay(){
+                this.$route.router.go({name: "index"})
             }
         }
     }
