@@ -41,8 +41,7 @@ module.exports = {
                 test: /\.jsx?$/,
                 loaders: ['babel'],
                 include: path.join(__dirname, 'scripts')
-            },
-            {
+            }, {
                 test: /\.less?$/,
                 loader: 'style!css!less'
             },
@@ -56,7 +55,7 @@ module.exports = {
     vue: {
         loaders: {
             js: 'babel'
-            // js: 'babel!eslint'
+                // js: 'babel!eslint'
         }
     },
 }
