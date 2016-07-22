@@ -15,6 +15,7 @@ module.exports = {
     ],
     //输出
     output: {
+        //当前模块文件所在目录的完整绝对路径
         path: __dirname,
         filename: 'bundle.js',
         // 公共文件生成的地址
