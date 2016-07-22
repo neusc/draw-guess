@@ -50,6 +50,7 @@
             }
         },
         methods: {
+          //添加回到主页面的路由
             replay(){
                 this.$route.router.go({name: "index"})
             }

@@ -40,7 +40,9 @@ router.map({
         component: show
     }
 });
+///定义全局的重定向规则
 router.redirect({
+	//重定向任意未匹配路径到/index
     '*': "/index"
 });
 

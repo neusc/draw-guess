@@ -45,6 +45,7 @@ class Draw {
 
         //开始新的路径，清除以前的路径
         this.cxt.beginPath()
+        //指定绘图起点
         this.cxt.moveTo(
             e.clientX - this.stage_info.left,
             e.clientY - this.stage_info.top
@@ -61,6 +62,7 @@ class Draw {
     }
     //不间断发送绘图坐标
     drawing(e, ws) {
+        //绘制路径但并没有在网页中显示
         this.cxt.lineTo(
             e.clientX - this.stage_info.left,
             e.clientY - this.stage_info.top
@@ -88,6 +90,7 @@ class Draw {
 }
 
 export default {
+    //Vue提供的生命周期钩子函数
     ready() {
         const ws = new WebSocket('ws://localhost:8090')
         let draw = new Draw('canvas')
@@ -97,7 +100,7 @@ export default {
         ws.onopen = () => {
             draw.init(ws, btn)
         }
-        //判断来自服务器的消息并执行操作
+        //获取服务器随机生成的关键字
         ws.onmessage = (msg) => {
             msg.data.split(':')[0] == 'keyword' ?
                 document.getElementById('keyword').innerHTML = msg.data.split(':')[1] : false
